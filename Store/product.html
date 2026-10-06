@@ -1,0 +1,183 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Product details — StyleStore" />
+  <title>Product Details — StyleStore</title>
+  <link rel="shortcut icon" href="images/bag-shopping-solid.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <header id="headerElement">
+    <div class="container header-inner">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <img src="images/IMG_20241124_141913_439.png" alt="StyleStore Logo" />
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html#shop">Men</a></li>
+          <li><a href="index.html#shop">Women</a></li>
+          <li><a href="index.html#shop">Children</a></li>
+          <li><a href="index.html#shop" class="nav-sale">Sale 🔥</a></li>
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <input type="search" placeholder="Search products..." aria-label="Search" />
+        <button aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <div class="header-actions">
+        <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-total" id="cartTotalHeader">$0.00</span>
+          <span class="badge-count" id="cartCountHeader">0</span>
+        </a>
+        <a class="btn-outline" href="signin.html"><i class="fa-solid fa-right-to-bracket"></i> Sign in</a>
+        <a class="btn-solid" href="register.html"><i class="fa-solid fa-user-plus"></i> Register</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="index.html">Home</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <a href="index.html#shop">Shop</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Facial Cleanser</span>
+    </div>
+  </div>
+
+  <main class="product-page">
+    <div class="container product-layout">
+
+      <!-- Image Gallery -->
+      <div class="product-gallery">
+        <div class="main-image-wrap">
+          <img src="images/product-03.jpg" alt="Facial Cleanser" id="mainProductImg" />
+          <span class="badge">-20%</span>
+        </div>
+        <div class="thumb-row">
+          <img src="images/product-01.jpg" alt="View 1" class="thumb active" onclick="switchImage(this, 'images/product-01.jpg')" />
+          <img src="images/product-02.jpg" alt="View 2" class="thumb" onclick="switchImage(this, 'images/product-02.jpg')" />
+          <img src="images/product-03.jpg" alt="View 3" class="thumb" onclick="switchImage(this, 'images/product-03.jpg')" />
+          <img src="images/product-04.jpg" alt="View 4" class="thumb" onclick="switchImage(this, 'images/product-04.jpg')" />
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info">
+        <p class="product-category">Women / Skincare</p>
+        <h1 class="product-title">Facial Cleanser</h1>
+
+        <div class="product-rating-row">
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="rating-count">5,170 reviews</span>
+          <span class="in-stock"><i class="fa-solid fa-circle-check"></i> In Stock</span>
+        </div>
+
+        <div class="product-price-block">
+          <del>$39.00</del>
+          <span class="big-price">$29.00</span>
+          <span class="save-badge">Save $10</span>
+        </div>
+ <p class="product-description">
+          A gentle daily facial cleanser suitable for all skin types. This formula removes impurities, makeup, and excess oil without stripping the skin's natural moisture barrier. Dermatologist tested and fragrance-free.
+        </p>
+
+        <!-- Quantity + Add to Cart -->
+        <div class="product-actions">
+          <div class="qty-control">
+            <button class="qty-btn" id="qtyMinus" onclick="changeQty(-1)" aria-label="Decrease quantity">−</button>
+            <span id="qtyValue">1</span>
+            <button class="qty-btn" id="qtyPlus" onclick="changeQty(1)" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="btn-add-cart" onclick="addToCart('Facial Cleanser', 29, 'images/product-03.jpg', this)">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="btn-wishlist-lg" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </div>
+
+        <div class="product-meta">
+          <p><strong>SKU:</strong> FC-2024-001</p>
+          <p><strong>Category:</strong> Skincare, Women</p>
+          <p><strong>Tags:</strong> Cleanser, Daily, All Skin Types</p>
+        </div>
+
+        <div class="secure-badges">
+          <span><i class="fa-solid fa-shield-halved"></i> Secure Payment</span>
+          <span><i class="fa-solid fa-rotate-left"></i> 30-Day Returns</span>
+          <span><i class="fa-solid fa-truck-fast"></i> Free Shipping over $99</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <img src="images/IMG_20241124_141913_439.png" alt="StyleStore Logo" class="footer-logo" />
+        <p>Quality lifestyle products for the whole family.</p>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="index.html#shop">Men</a></li>
+          <li><a href="index.html#shop">Women</a></li>
+          <li><a href="index.html#shop">Children</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="signin.html">Sign In</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Designed and developed by <span>Ali Hassan</span> © 2024. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="js/main.js"></script>
+  <script>
+    let currentQty = 1;
+    function changeQty(delta) {
+      currentQty = Math.max(1, currentQty + delta);
+      document.getElementById('qtyValue').textContent = currentQty;
+    }
+    function switchImage(el, src) {
+      document.getElementById('mainProductImg').src = src;
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
+</body>
+</html>

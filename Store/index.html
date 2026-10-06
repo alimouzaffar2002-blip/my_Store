@@ -1,0 +1,507 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shop the latest lifestyle collection for Men, Women & Children. Sale up to 30% off. Free shipping on orders over $99." />
+  <title>StyleStore — Lifestyle Collection</title>
+  <link rel="shortcut icon" href="images/bag-shopping-solid.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header id="headerElement">
+    <div class="container header-inner">
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <a href="index.html" class="logo" aria-label="StyleStore Home">
+        <img src="images/IMG_20241124_141913_439.png" alt="StyleStore Logo" />
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="#shop">Men</a></li>
+          <li><a href="#shop">Women</a></li>
+          <li><a href="#shop">Children</a></li>
+          <li><a href="#shop" class="nav-sale">Sale 🔥</a></li>
+        </ul>
+      </nav>
+
+      <div class="search-bar">
+        <input type="search" id="searchInput" placeholder="Search products..." aria-label="Search products" />
+        <button id="searchBtn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+
+      <div class="header-actions">
+        <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-total" id="cartTotalHeader">$0.00</span>
+          <span class="badge-count" id="cartCountHeader">0</span>
+        </a>
+        <a class="btn-outline" href="signin.html"><i class="fa-solid fa-right-to-bracket"></i> Sign in</a>
+        <a class="btn-solid" href="register.html"><i class="fa-solid fa-user-plus"></i> Register</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="hero-eyebrow">Lifestyle Collection</p>
+      <h1 class="hero-title">Men, Women<br>&amp; Children</h1>
+      <p class="hero-sale">SALE UP TO <span>30% OFF</span></p>
+      <p class="hero-ship"><i class="fa-solid fa-truck"></i> Free shipping on orders over $99.00</p>
+      <a href="#shop" class="btn-hero">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BADGES ===== -->
+  <section class="trust-bar">
+    <div class="container trust-inner">
+      <div class="trust-item"><i class="fa-solid fa-truck-fast"></i><span>Free Shipping over $99</span></div>
+      <div class="trust-item"><i class="fa-solid fa-rotate-left"></i><span>30-Day Free Returns</span></div>
+      <div class="trust-item"><i class="fa-solid fa-shield-halved"></i><span>Secure Checkout</span></div>
+      <div class="trust-item"><i class="fa-solid fa-headset"></i><span>24/7 Support</span></div>
+    </div>
+  </section>
+
+  <!-- ===== BREADCRUMB (hidden on home, shown on other pages) ===== -->
+
+  <!-- ===== PRODUCTS SECTION ===== -->
+  <section class="section shop" id="shop" aria-label="Shop">
+    <div class="container">
+
+      <div class="section-header">
+        <h2 class="section-title">Our Bestsellers</h2>
+        <a href="#shop" class="btn-link">Shop All Products <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="men">Men</button>
+<button class="filter-btn" data-filter="women">Women</button>
+        <button class="filter-btn" data-filter="children">Children</button>
+        <select class="sort-select" id="sortSelect" aria-label="Sort products">
+          <option value="default">Sort by: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+        </select>
+      </div>
+
+      <!-- Free Shipping Progress -->
+      <div class="shipping-progress" id="shippingProgress">
+        <p><i class="fa-solid fa-truck"></i> Add <strong id="shippingRemain">$99.00</strong> more for free shipping!</p>
+        <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      </div>
+
+      <ul class="products-grid" id="productsGrid">
+
+        <li class="product-item" data-category="women" data-price="29" data-rating="5">
+          <div class="shop-card">
+            <div class="card-banner">
+              <img src="images/product-01.jpg" width="540" height="720" loading="lazy" alt="Facial Cleanser" class="img-cover">
+              <span class="badge">-20%</span>
+              <div class="card-actions">
+                <button class="action-btn" aria-label="Add to cart" onclick="addToCart('Facial Cleanser', 29, 'images/product-01.jpg', this)">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+                <button class="action-btn wishlist-btn" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="action-btn" aria-label="Quick view" onclick="openQuickView('Facial Cleanser', 29, 'images/product-01.jpg', 'A gentle daily facial cleanser suitable for all skin types. Removes impurities without stripping moisture.')">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="price">
+                <del class="del">$39.00</del>
+                <span class="price-now">$29.00</span>
+              </div>
+              <h3><a href="product.html" class="card-title">Facial Cleanser</a></h3>
+              <div class="card-rating">
+                <div class="stars" aria-label="5 star rating">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="rating-text">(5,170)</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="product-item" data-category="men" data-price="29" data-rating="4">
+          <div class="shop-card">
+            <div class="card-banner">
+              <img src="images/product-02.jpg" width="540" height="720" loading="lazy" alt="Bio-shroom Rejuvenating Serum" class="img-cover">
+              <div class="card-actions">
+                <button class="action-btn" aria-label="Add to cart" onclick="addToCart('Rejuvenating Serum', 29, 'images/product-02.jpg', this)">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+                <button class="action-btn wishlist-btn" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="action-btn" aria-label="Quick view" onclick="openQuickView('Rejuvenating Serum', 29, 'images/product-02.jpg', 'Bio-shroom formula that deeply nourishes and rejuvenates tired skin overnight.')">
+                  <i class="fa-solid fa-eye"></i>
+ </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="price"><span class="price-now">$29.00</span></div>
+              <h3><a href="product.html" class="card-title">Rejuvenating Serum</a></h3>
+              <div class="card-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                </div>
+                <p class="rating-text">(3,842)</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="product-item" data-category="women" data-price="29" data-rating="5">
+          <div class="shop-card">
+            <div class="card-banner">
+              <img src="images/product-03.jpg" width="540" height="720" loading="lazy" alt="Coffee Bean Eye Cream" class="img-cover">
+              <div class="card-actions">
+                <button class="action-btn" aria-label="Add to cart" onclick="addToCart('Coffee Bean Eye Cream', 29, 'images/product-03.jpg', this)">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+                <button class="action-btn wishlist-btn" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="action-btn" aria-label="Quick view" onclick="openQuickView('Coffee Bean Eye Cream', 29, 'images/product-03.jpg', 'Caffeine-infused eye cream that reduces puffiness and dark circles.')">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="price"><span class="price-now">$29.00</span></div>
+              <h3><a href="product.html" class="card-title">Coffee Bean Eye Cream</a></h3>
+              <div class="card-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="rating-text">(2,910)</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="product-item" data-category="children" data-price="29" data-rating="4">
+          <div class="shop-card">
+            <div class="card-banner">
+              <img src="images/product-04.jpg" width="540" height="720" loading="lazy" alt="Gentle Kids Lotion" class="img-cover">
+              <div class="card-actions">
+                <button class="action-btn" aria-label="Add to cart" onclick="addToCart('Gentle Kids Lotion', 29, 'images/product-04.jpg', this)">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+                <button class="action-btn wishlist-btn" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="action-btn" aria-label="Quick view" onclick="openQuickView('Gentle Kids Lotion', 29, 'images/product-04.jpg', 'Hypoallergenic lotion specially formulated for sensitive children\'s skin.')">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="price"><span class="price-now">$29.00</span></div>
+              <h3><a href="product.html" class="card-title">Gentle Kids Lotion</a></h3>
+              <div class="card-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                </div>
+                <p class="rating-text">(1,540)</p>
+              </div>
+            </div>
+          </div>
+        </li>
+ <li class="product-item" data-category="men" data-price="29" data-rating="5">
+          <div class="shop-card">
+            <div class="card-banner">
+              <img src="images/product-05.jpg" width="540" height="720" loading="lazy" alt="Men's Aftershave Balm" class="img-cover">
+              <span class="badge">-20%</span>
+              <div class="card-actions">
+                <button class="action-btn" aria-label="Add to cart" onclick="addToCart('Aftershave Balm', 29, 'images/product-05.jpg', this)">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+                <button class="action-btn wishlist-btn" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="action-btn" aria-label="Quick view" onclick="openQuickView('Aftershave Balm', 29, 'images/product-05.jpg', 'Soothing aftershave balm with natural ingredients for smooth, irritation-free skin.')">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="price">
+                <del class="del">$39.00</del>
+                <span class="price-now">$29.00</span>
+              </div>
+              <h3><a href="product.html" class="card-title">Aftershave Balm</a></h3>
+              <div class="card-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="rating-text">(4,200)</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="product-item" data-category="women" data-price="29" data-rating="5">
+          <div class="shop-card">
+            <div class="card-banner">
+              <img src="images/product-06.jpg" width="540" height="720" loading="lazy" alt="Vitamin C Brightening Serum" class="img-cover">
+              <span class="badge">-20%</span>
+              <div class="card-actions">
+                <button class="action-btn" aria-label="Add to cart" onclick="addToCart('Vitamin C Serum', 29, 'images/product-06.jpg', this)">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+                <button class="action-btn wishlist-btn" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="action-btn" aria-label="Quick view" onclick="openQuickView('Vitamin C Serum', 29, 'images/product-06.jpg', 'Brightening Vitamin C serum that evens skin tone and reduces dark spots.')">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="price">
+                <del class="del">$39.00</del>
+                <span class="price-now">$29.00</span>
+              </div>
+              <h3><a href="product.html" class="card-title">Vitamin C Serum</a></h3>
+              <div class="card-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="rating-text">(6,310)</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="product-item" data-category="men" data-price="29" data-rating="4">
+          <div class="shop-card">
+            <div class="card-banner">
+ <img src="images/product-08.jpg" width="540" height="720" loading="lazy" alt="Hydrating Face Wash" class="img-cover">
+              <div class="card-actions">
+                <button class="action-btn" aria-label="Add to cart" onclick="addToCart('Hydrating Face Wash', 29, 'images/product-08.jpg', this)">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+                <button class="action-btn wishlist-btn" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="action-btn" aria-label="Quick view" onclick="openQuickView('Hydrating Face Wash', 29, 'images/product-08.jpg', 'Gentle daily face wash with hyaluronic acid for deep hydration.')">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="price"><span class="price-now">$29.00</span></div>
+              <h3><a href="product.html" class="card-title">Hydrating Face Wash</a></h3>
+              <div class="card-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                </div>
+                <p class="rating-text">(2,100)</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="product-item" data-category="children" data-price="29" data-rating="5">
+          <div class="shop-card">
+            <div class="card-banner">
+              <img src="images/product-09.jpg" width="540" height="720" loading="lazy" alt="Kids SPF Sunscreen" class="img-cover">
+              <div class="card-actions">
+                <button class="action-btn" aria-label="Add to cart" onclick="addToCart('Kids SPF Sunscreen', 29, 'images/product-09.jpg', this)">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+                <button class="action-btn wishlist-btn" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="action-btn" aria-label="Quick view" onclick="openQuickView('Kids SPF Sunscreen', 29, 'images/product-09.jpg', 'SPF 50+ mineral sunscreen safe for children\'s delicate skin.')">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="price"><span class="price-now">$29.00</span></div>
+              <h3><a href="product.html" class="card-title">Kids SPF Sunscreen</a></h3>
+              <div class="card-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="rating-text">(890)</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="product-item" data-category="women" data-price="29" data-rating="5">
+          <div class="shop-card">
+            <div class="card-banner">
+              <img src="images/product-10.jpg" width="540" height="720" loading="lazy" alt="Retinol Night Cream" class="img-cover">
+              <span class="badge">-20%</span>
+              <div class="card-actions">
+                <button class="action-btn" aria-label="Add to cart" onclick="addToCart('Retinol Night Cream', 29, 'images/product-10.jpg', this)">
+                  <i class="fa-solid fa-bag-shopping"></i>
+</button>
+                <button class="action-btn wishlist-btn" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="action-btn" aria-label="Quick view" onclick="openQuickView('Retinol Night Cream', 29, 'images/product-10.jpg', 'Advanced retinol night cream that visibly reduces fine lines while you sleep.')">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="price">
+                <del class="del">$39.00</del>
+                <span class="price-now">$29.00</span>
+              </div>
+              <h3><a href="product.html" class="card-title">Retinol Night Cream</a></h3>
+              <div class="card-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="rating-text">(7,880)</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="product-item" data-category="men" data-price="29" data-rating="5">
+          <div class="shop-card">
+            <div class="card-banner">
+              <img src="images/product-11.jpg" width="540" height="720" loading="lazy" alt="Men's Moisturizing Cream" class="img-cover">
+              <span class="badge">-20%</span>
+              <div class="card-actions">
+                <button class="action-btn" aria-label="Add to cart" onclick="addToCart('Men\'s Moisturizing Cream', 29, 'images/product-11.jpg', this)">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+                <button class="action-btn wishlist-btn" aria-label="Add to wishlist" onclick="toggleWishlist(this)">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="action-btn" aria-label="Quick view" onclick="openQuickView('Men\'s Moisturizing Cream', 29, 'images/product-11.jpg', 'Lightweight moisturizing cream built for men\'s skin after shaving or sports.')">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="price">
+                <del class="del">$39.00</del>
+                <span class="price-now">$29.00</span>
+              </div>
+              <h3><a href="product.html" class="card-title">Men's Moisturizer</a></h3>
+              <div class="card-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="rating-text">(3,540)</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter">
+    <div class="container newsletter-inner">
+      <div>
+        <h3>Stay in the loop</h3>
+        <p>Get exclusive offers, new arrivals, and style tips straight to your inbox.</p>
+      </div>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email address" aria-label="Email for newsletter" id="newsletterEmail" />
+        <button onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <img src="images/IMG_20241124_141913_439.png" alt="StyleStore Logo" class="footer-logo" />
+<p>Quality lifestyle products for the whole family. Designed with care, delivered with love.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#shop">Men</a></li>
+          <li><a href="#shop">Women</a></li>
+          <li><a href="#shop">Children</a></li>
+          <li><a href="#shop">Sale Items</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="signin.html">Sign In</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="cart.html">My Cart</a></li>
+          <li><a href="#">Wishlist</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Designed and developed by <span>Ali Hassan</span> © 2024. All rights reserved.</p>
+      <div class="payment-icons">
+        <i class="fa-brands fa-cc-visa"></i>
+        <i class="fa-brands fa-cc-mastercard"></i>
+        <i class="fa-brands fa-cc-paypal"></i>
+        <i class="fa-brands fa-cc-apple-pay"></i>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== QUICK VIEW MODAL ===== -->
+  <div class="modal-overlay" id="quickViewModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeQuickView()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <img id="modalImg" src="" alt="" />
+      <div class="modal-info">
+        <h3 id="modalTitle"></h3>
+        <p class="modal-price" id="modalPrice"></p>
+        <p id="modalDesc"></p>
+        <button class="btn-cart-modal" id="modalAddCart">
+          <i class="fa-solid fa-cart-plus"></i> Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST NOTIFICATION ===== -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
