@@ -4,10 +4,18 @@
    ============================================= */
 
 // ─── CART STATE ───────────────────────────────
-let cart = JSON.parse(localStorage.getItem('ss_cart') || '[]');
+let cart = [];
+try {
+  cart = JSON.parse(localStorage.getItem('ss_cart') || '[]');
+  if (!Array.isArray(cart)) cart = [];
+} catch (e) {
+  cart = [];
+}
 
 function saveCart() {
-  localStorage.setItem('ss_cart', JSON.stringify(cart));
+  try {
+    localStorage.setItem('ss_cart', JSON.stringify(cart));
+  } catch (e) { /* storage unavailable: keep cart in memory only */ }
   updateHeaderCart();
   updateShippingProgress();
 }
@@ -63,7 +71,7 @@ function renderCart() {
   if (emptyEl)   emptyEl.style.display   = 'none';
   if (controlEl) controlEl.style.display = 'flex';
 
-  listEl.innerHTML = cart.map(item => 
+  listEl.innerHTML = cart.map(item => `
     <div class="cart-item" id="item-${item.id}">
       <img src="${item.img}" alt="${item.name}" />
       <div class="cart-item-info">
@@ -79,7 +87,7 @@ function renderCart() {
         </div>
       </div>
     </div>
-  ).join('');
+  `).join('');
 
   updateSummary();
 }
@@ -166,7 +174,7 @@ function updateShippingProgress() {
   if (remain) {
     remain.textContent = subtotal >= 99
       ? 'You\'ve got free shipping! 🎉'
-      : '$' + (99 - subtotal).toFixed(2) + ' more';
+      : '$' + (99 - subtotal).toFixed(2);
   }
 }
 
@@ -284,12 +292,29 @@ function initHamburger() {
   const btn = document.getElementById('hamburgerBtn');
   const nav = document.getElementById('mainNav');
   if (!btn || !nav) return;
-  btn.addEventListener('click', () => {
-    nav.classList.toggle('open');
+
+  const setOpen = (open) => {
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     const icon = btn.querySelector('i');
-    icon.className = nav.classList.contains('open')
-      ? 'fa-solid fa-xmark'
-      : 'fa-solid fa-bars';
+    if (icon) icon.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+  };
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setOpen(!nav.classList.contains('open'));
+  });
+  // close when a menu link is tapped
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setOpen(false);
+  });
+  // close when tapping outside
+  document.addEventListener('click', (e) => {
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) setOpen(false);
+  });
+  // reset when returning to desktop width
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) setOpen(false);
   });
 }
 

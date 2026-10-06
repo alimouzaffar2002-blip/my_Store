@@ -37,15 +37,20 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
+html, body { max-width: 100%; }
+html { scroll-padding-top: var(--header-h); }
 body {
   font-family: 'Inter', system-ui, sans-serif;
   color: var(--dark);
   background: var(--bg);
   line-height: 1.6;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 img {
   max-width: 100%;
@@ -239,8 +244,9 @@ header {
 .hero {
   position: relative;
   height: calc(100vh - var(--header-h));
+  height: calc(100svh - var(--header-h));
   min-height: 480px;
-  background: url('../images/InShot_hero.jpg') center/cover no-repeat;
+  background: url('../images/hero-banner-1.jpg') center/cover no-repeat;
   background-color: var(--dark);
   display: flex;
   align-items: center;
@@ -1371,3 +1377,136 @@ body.auth-page header {
   .product-gallery { position: static; }
   .main-image-wrap img { height: 380px; }
 }
+
+
+/* =============================================
+   TOUCH DEVICES — no hover: always show card buttons
+   ============================================= */
+@media (hover: none) {
+  .card-actions { opacity: 1; right: 10px; top: 12px; transform: none; }
+  .shop-card:hover { transform: none; }
+  .shop-card:hover .img-cover { transform: none; }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE / SMALL TABLET (<= 768px)
+   ============================================= */
+@media (max-width: 768px) {
+  :root { --header-h: 64px; }
+  .container { padding-inline: 14px; }
+
+  /* Header */
+  .header-inner { gap: 10px; }
+  .hamburger { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; }
+  .logo img { height: 36px; }
+  .search-bar { display: none; }
+  .header-actions { margin-left: auto; gap: 8px; }
+  .cart-total { display: none; }
+  .cart-link { padding: 9px 12px; }
+  .btn-outline, .btn-solid { padding: 8px 12px; font-size: 0.78rem; }
+  .btn-outline i, .btn-solid i { display: none; }
+
+  /* Slide-down mobile menu */
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    box-shadow: var(--shadow-md);
+    padding: 10px 14px 16px;
+    z-index: 99;
+  }
+  .main-nav.open { display: block; }
+  .main-nav ul { flex-direction: column; gap: 2px; }
+  .main-nav a { display: block; padding: 12px 14px; font-size: 1rem; border-radius: 8px; }
+
+  /* Hero */
+  .hero { min-height: 420px; background-position: 65% center; }
+  .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.78)); }
+  .hero-content { max-width: 100%; }
+  .hero-sale { font-size: 1.05rem; }
+  .hero-sale span { font-size: 1.2rem; }
+  .btn-hero { padding: 12px 24px; }
+
+  /* Trust bar */
+  .trust-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; justify-content: stretch; }
+  .trust-item { font-size: 0.76rem; }
+
+  /* Sections */
+  .section-header { margin-top: 36px; margin-bottom: 18px; }
+  .section-title { font-size: 1.5rem; }
+  .filter-bar { gap: 8px; }
+  .filter-btn { padding: 7px 14px; }
+  .sort-select { margin-left: 0; width: 100%; padding: 10px 14px; font-size: 16px; }
+
+  /* Products: 2 columns */
+  .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .card-content { padding: 10px 10px 12px; }
+  .card-title { font-size: 0.82rem; }
+  .price-now { font-size: 0.95rem; }
+  .action-btn { width: 36px; height: 36px; }
+  .rating-text { font-size: 0.7rem; }
+
+  /* Newsletter */
+  .newsletter { padding: 40px 0; }
+  .newsletter-inner { flex-direction: column; align-items: stretch; gap: 18px; }
+  .newsletter-form { width: 100%; flex-shrink: 1; }
+  .newsletter-form input { flex: 1; min-width: 0; width: auto; font-size: 16px; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; padding: 40px 0 28px; }
+  .footer-grid > .footer-col:first-child { grid-column: 1 / -1; }
+  .footer-col p { max-width: 100%; }
+  .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
+
+  /* Cart */
+  .cart-page, .product-page { padding: 24px 0 56px; }
+  .cart-item { gap: 12px; padding: 12px; align-items: flex-start; }
+  .cart-item img { width: 70px; height: 70px; }
+  .cart-item-title { white-space: normal; }
+  .qty-row { flex-wrap: wrap; }
+  .order-summary { padding: 18px; }
+
+  /* Product page */
+  .product-layout { gap: 24px; }
+  .main-image-wrap img { height: auto; aspect-ratio: 1 / 1; }
+  .thumb-row { overflow-x: auto; padding-bottom: 4px; }
+  .thumb { flex-shrink: 0; }
+  .product-title { font-size: 1.5rem; }
+  .big-price { font-size: 1.6rem; }
+  .product-actions { flex-wrap: wrap; }
+  .btn-add-cart { min-width: 150px; }
+
+  /* Auth */
+  .auth-main { padding: 28px 14px 56px; }
+  .auth-card { padding: 24px 18px; border-radius: 16px; }
+  .social-auth { flex-direction: column; }
+  .input-group input { font-size: 16px; } /* stops iOS zoom-on-focus */
+
+  /* Quick view modal: stack image above text */
+  .modal-overlay { padding: 14px; align-items: flex-end; }
+  .modal-box { flex-direction: column; max-height: 90vh; max-height: 90dvh; overflow-y: auto; }
+  .modal-box img { width: 100%; height: 220px; }
+  .modal-info { padding: 20px 18px 22px; }
+
+  /* Toast */
+  .toast { white-space: normal; width: calc(100% - 32px); max-width: 420px; text-align: center; bottom: 20px; }
+}
+
+/* =============================================
+   RESPONSIVE — SMALL PHONES (<= 480px)
+   ============================================= */
+@media (max-width: 480px) {
+  .btn-outline { display: none; }          /* Sign in stays reachable from the menu/footer */
+  .breadcrumb .container { flex-wrap: wrap; }
+  .coupon-box input { min-width: 0; font-size: 16px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .section-header .btn-link { font-size: 0.82rem; }
+}
+
+/* "Sign in" link inside the menu: mobile only */
+.nav-account { display: none; }
+@media (max-width: 480px) { .nav-account { display: block; } }
