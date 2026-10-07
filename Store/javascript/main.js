@@ -31,12 +31,13 @@ function updateHeaderCart() {
 }
 
 // ─── ADD TO CART ───────────────────────────────
-function addToCart(name, price, img, btnEl) {
+function addToCart(name, price, img, btnEl, qty = 1) {
+  qty = Math.max(1, parseInt(qty, 10) || 1);
   const existing = cart.find(i => i.name === name);
   if (existing) {
-    existing.qty++;
+    existing.qty += qty;
   } else {
-    cart.push({ name, price, img, qty: 1, id: Date.now() });
+    cart.push({ name, price, img, qty, id: Date.now() });
   }
   saveCart();
   showToast(`"${name}" added to cart!`, 'success');

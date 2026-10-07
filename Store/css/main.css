@@ -1510,3 +1510,14 @@ body.auth-page header {
 /* "Sign in" link inside the menu: mobile only */
 .nav-account { display: none; }
 @media (max-width: 480px) { .nav-account { display: block; } }
+
+/* Logo is dark artwork: give it a light badge so it shows on the dark header/footer */
+.logo img, img.footer-logo {
+  background: #fff;
+  border-radius: 8px;
+  padding: 3px 10px;
+  box-sizing: content-box;
+}
+@media (max-width: 768px) {
+  .logo img { height: 30px; padding: 3px 8px; }
+}
